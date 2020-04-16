@@ -1,8 +1,23 @@
+/* Note: I downloaded the img so I wasn't hot-linking...
+To get the img to show, I had to start the URL with '/..'
+then cd back into my new project folder ('/Brought-Programming-Playground') to tell the page where to
+find this specific img directory */
+
 html {
     font-size: 10px;
-    background-image: url("/img/crowd.jpg");
+    background: url("/../Brought-Programming-Playground/img/crowd.jpg") bottom center;
     background-size: cover;
 }
+
+/* This was his original styling, but I downloaded the image and saved it in the
+img folder so I didn't have to hotlink*/
+
+/*html {*/
+/*    font-size: 10px;*/
+/*    background: url(https://i.imgur.com/b9r5sEL.jpg) bottom center;*/
+/*    background-size: cover;*/
+/*}*/
+
 
 html, body {
     margin: 0;
@@ -10,6 +25,7 @@ html, body {
     font-family: sans-serif;
 }
 
+/* This is the layout for all the keys */
 .keys {
     display: flex;
     flex: 1;
@@ -18,11 +34,38 @@ html, body {
     justify-content: center;
 }
 
+/* This is the box styling for ea individual key */
+
 .key {
     border: .4em solid black;
     border-radius: .5rem;
     margin: 1rem;
     font-size: 1.5rem;
     padding: 1rem .5rem;
-/*    Start with Adding Transition*/
+    transition: all 0.07s;
+    width: 10rem;
+    text-align: center;
+    color: white;
+    background: rgba(0, 0, 0, 0.4);
+    text-shadow: 0 0 .5rem black;
+}
+
+/* This will be targeted in JS and will highlight the button when 'played'*/
+.playing {
+    transform: scale(1.1);
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+}
+
+/* This is the styling for the keyboard key characters*/
+kbd {
+    display: block;
+    font-size: 4rem;
+}
+
+.sound {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    color: #ffc600;
 }

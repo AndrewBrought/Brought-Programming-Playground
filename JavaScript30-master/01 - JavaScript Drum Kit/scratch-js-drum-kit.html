@@ -58,6 +58,112 @@
 
     <script>
 
+        function removeTransition(e) {
+            if (e.propertyName !== 'transform') return;
+            e.target.classList.remove('playing');
+        }
+
+        function playSound(e) {
+            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+            if (!audio) return;
+
+            key.classList.add('playing');
+            audio.currentTime = 0;
+            audio.play();
+        }
+
+        const keys = Array.from(document.querySelectorAll('.key'));
+        keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+        window.addEventListener('keydown', playSound);
+
+      // This is a function that 'listens' for a key-up event: in this case
+        // We're going to 'listen' on the our window for the event
+
+      //We are going to listen for the 'keydown' event on our window
+      //When that happens we're going to run this 'function(e)' which
+      // will give us the event and we'll log that event.
+      //   window.addEventListener('keydown', function(e) {
+            // console.log(e.keyCode);
+        // This is will tell us what the keycode # is for every key on
+            // the key pad of a computer.
+
+        //NOW, we're going to say: 'is there an audio element on the page that
+            //has a data-key of 65:
+            //We use the query selector because we're only looking for 1.
+            //If we were looking for many we would say 'querySelectorAll'.
+
+            // const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+
+
+            //This will select the element with the class of 'key'
+
+            // const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+            // console.log(audio);
+
+
+            // if(!audio) return; // if a key is pressed without audio assigned,
+            // stop the function from running all together
+
+
+            // audio.currentTime = 0; // This cut out any lag in the  repeated performance of the audio with rapid keystroke
+            // audio.play(); //This enables the sound file to perform when the appropriate key is typed
+
+            // console.log(key); //logging the class of key and it's container to make sure
+            // it's being targeted appropriately
+
+
+            //Target the 'playing' class so we see the container-border highlight
+            //And the text grow when that key is typed
+
+            // key.classList.add('playing'); //We're basically saying key.add the class (playing)
+
+
+            //  A click event is when you click something, it while fire off the event
+            // and say: 'somebody clicked me'...
+
+            //  A transition event says: 'I didn't get clicked, but I transitioned myself'
+            // ...say from scale 1.0 border black to scale 1.1 border yellow.
+            // We can 'listen' on each key for when the transition-end event happens *see bottom:
+
+
+
+
+        // });
+
+        // function removeTransition(e) {
+            // console.log(e);
+            // This showed us all of the transition properties that took place
+            // after striking a given key.
+
+            // if(e.propertyName !== 'transform') return; //skip it if it's not a transform
+            // console.log(e.propertyName);  // tells us the property name transitioning
+
+            // this.classList.remove('playing');
+
+            // 'this' refers to the key - because 'this' is always equal to whatever got
+            // called against it... addEventListener got called against 'key'
+        // }
+
+        // Listen for transition-end on each key:
+
+        // const keys = document.querySelectorAll('.key');
+        //this gives us an array of every single element that is matched
+
+        //Listen for event called transition-end on each one:
+
+        // keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+        //Here, each key gets an event-listener added to it for 'transitionend' - when
+        // a transition is ending, we will remove it: see removeTransition function above.
+
+        // SO...we hit an active class of key (which has a transition of 0.07s),
+        //our audio file will be triggered..
+
+        // after the designated time has elapsed - 'transitionend' is going to fire into
+        // the 'removeTransition' function and remove the class of 'playing' that
+        // we set in css to highlight the button that was triggered.
+
 
     </script>
 
