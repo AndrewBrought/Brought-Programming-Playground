@@ -179,6 +179,19 @@
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
+    const transportation = data.reduce(function(obj, item){
+    // From here if we return obj and console.log - we get the entire array of objects..
+        // We need to return the object item but are unsure if there is an index specified...SO, we specifiy it to be sure
+
+        if(!obj[item]) {
+            obj[item] = 0;
+        }
+        obj[item]++;
+        return obj;
+    }, {}) // {} is a blank object
+
+    console.log(transportation);
+
 </script>
 </body>
 </html>
