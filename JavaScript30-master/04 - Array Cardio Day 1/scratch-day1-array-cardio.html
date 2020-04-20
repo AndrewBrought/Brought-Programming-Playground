@@ -154,11 +154,27 @@
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+    // Must be run on console of website...
+    // const category = document.querySelector('.mw-category'); //We get the class of mw-category by inspecting tb-contd..
+    // const links = Array.from(category.querySelectorAll('a')); // Here we're searching for all links or 'a-tags' - BUT, first we must
+    // convert this list into an array by using 'Array.from()'
 
+    // const de = links
+    //     .map(link => link.textContent) // Allows us to comb through the array and look at it's
+    //     .filter(streetname => streetname.includes('de'));                                            // Text content for phrases containing 'de'
+                                                            // contd..The list of street names with the dev tools
+                                                            // And discovering how to refer to the container
+                                                            // They're in... in this case, a container with class
+                                                            // 'mw-category' .
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
-
+    const alpha = people.sort(function(lastOne, nextOne) {
+    const [aLast, aFirst] = lastOne.split(', ')
+    const [bLast, bFirst] = nextOne.split(', ')
+        return aLast > bLast ? 1: -1;
+    });
+    console.log(alpha);
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
