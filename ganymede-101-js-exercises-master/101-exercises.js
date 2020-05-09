@@ -864,6 +864,10 @@ addToDone("Exercise 66 is correct.")
 
 // Exercise 67
 // Write a function definition named onlyOddNumbers that takes in sequence of numbers and returns the odd numbers in an array.
+    function onlyOddNumbers(array){
+    var odds = array.filter(number => number % 2 !== 0);
+        return odds;
+    }
 
 assert(onlyOddNumbers([1, 2, 3]), [1, 3], "Exercise 67");
 assert(onlyOddNumbers([-5, -4, -3, -2, -1, 1, 2, 3, 4, 5]), [-5, -3, -1, 1, 3, 5], "Exercise 67");
@@ -874,7 +878,10 @@ addToDone("Exercise 67 is correct.")
 
 // Exercise 68
 // Write a function definition named onlyEvenNumbers that takes in sequence of numbers and returns the even numbers in an array.
-
+    function onlyEvenNumbers(array){
+        var evens = array.filter(number => number % 2 === 0);
+        return evens
+    }
 assert(onlyEvenNumbers([1, 2, 3]), [2], "Exercise 68");
 assert(onlyEvenNumbers([-5, -4, -3, -2, -1, 1, 2, 3, 4, 5]), [-4, -2, 2, 4], "Exercise 68");
 assert(onlyEvenNumbers([-4, -3, 1]), [-4], "Exercise 68");
@@ -883,7 +890,12 @@ addToDone("Exercise 68 is correct.")
 
 // Exercise 69
 // Write a function definition named onlyPositiveNumbers that takes in sequence of numbers and returns the positive numbers in an array.
-
+   function onlyPositiveNumbers(array) {
+       // let pos = arr.filter(n => n >= 0);
+       // return pos;
+       var positives = array.filter(number => number >= 0);
+       return positives;
+   }
 assert(onlyPositiveNumbers([1, 2, 3]), [1, 2, 3], "Exercise 69");
 assert(onlyPositiveNumbers([-5, -4, -3, -2, -1, 1, 2, 3, 4, 5]), [1, 2, 3, 4, 5], "Exercise 69");
 assert(onlyPositiveNumbers([-4, -3, 1]), [1], "Exercise 69");
@@ -892,7 +904,10 @@ addToDone("Exercise 69 is correct.")
 
 // Exercise 70
 // Write a function definition named onlyNegativeNumbers that takes in sequence of numbers and returns the negative numbers in an array.
-
+    function onlyNegativeNumbers(array){
+        var negatives = array.filter(number => number < 0);
+        return negatives;
+    }
 assert(onlyNegativeNumbers([1, 2, 3]), [], "Exercise 70");
 assert(onlyNegativeNumbers([-5, -4, -3, -2, -1, 1, 2, 3, 4, 5]), [-5, -4, -3, -2, -1], "Exercise 70");
 assert(onlyNegativeNumbers([-4, -3, 1]), [-4, -3], "Exercise 70");
@@ -902,7 +917,14 @@ addToDone("Exercise 70 is correct.");
 
 // Exercise 71
 // Write a function definition named hasEvens that takes in sequence of numbers and returns true if there are any even numbers in the sequence
-
+    function isEven(randomNumber) {
+        if (randomNumber % 2 === 0) {
+            return true;
+        }
+    }
+    function hasEvens(array) {
+        return array.some(isEven);
+    }
 assert(hasEvens([1, 2, 3]), true, "Exercise 71");
 assert(hasEvens([2, 5, 6]), true, "Exercise 71");
 assert(hasEvens([3, 3, 3]), false, "Exercise 71");
@@ -913,7 +935,13 @@ addToDone("Exercise 71 is correct.");
 
 // Exercise 72
 // Write a function definition named countEvens that takes in sequence of numbers and returns the number of even numbers
-
+    function countEvens(array){
+        var odds = array.reduce(function(a, b){
+            return a + (b % 2)
+        }, 0);
+        var even = array.length - odds;
+        return even;
+    }
 assert(countEvens([1, 2, 3]), 1, "Exercise 72");
 assert(countEvens([2, 5, 6]), 2, "Exercise 72");
 assert(countEvens([3, 3, 3]), 0, "Exercise 72");
@@ -923,7 +951,15 @@ addToDone("Exercise 72 is correct.")
 
 // Exercise 73
 // Write a function definition named hasOdds that takes in sequence of numbers and returns true if there are any odd numbers in the sequence
+    function isOdd(num){
+    if(num %2){
+        return true;
+    }
+}
 
+    function hasOdds(array){
+        return array.some(isOdd)
+    }
 assert(hasOdds([1, 2, 3]), true, "Exercise 73");
 assert(hasOdds([2, 5, 6]), true, "Exercise 73");
 assert(hasOdds([3, 3, 3]), true, "Exercise 73");
@@ -933,7 +969,13 @@ addToDone("Exercise 73 is correct.")
 
 // Exercise 74
 // Write a function definition named countOdds that takes in sequence of numbers and returns a count of the any odd numbers in the sequence
-
+    function countOdds(array){
+        var evens = array.reduce(function(a, b){
+            return a + (b % 2 === 0);
+        }, 0);
+        var odds = array.length - evens;
+        return odds;
+    }
 assert(countOdds([1, 2, 3]), 2, "Exercise 74");
 assert(countOdds([2, 5, 6]), 1, "Exercise 74");
 assert(countOdds([3, 3, 3]), 3, "Exercise 74");
@@ -943,6 +985,13 @@ addToDone("Exercise 74 is correct.")
 
 // Exercise 75
 // Write a function definition named countNegatives that takes in sequence of numbers and returns a count of the number of negative numbers
+   function countNegatives (array) {
+       var positives = array.reduce(function (a, b) {
+           return a + (b > 0);
+       }, 0);
+       var negatives = array.length - positives;
+       return negatives;
+   }
 
 assert(countNegatives([1, -2, 3]), 1, "Exercise 75");
 assert(countNegatives([2, -5, -6]), 2, "Exercise 75");
@@ -952,6 +1001,13 @@ addToDone("Exercise 75 is correct.")
 
 // Exercise 76
 // Write a function definition named countPositives that takes in sequence of numbers and returns a count of the number of positive numbers
+    function countPositives (array) {
+    var negatives = array.reduce(function(a, b){
+        return a + (b < 0);
+    },0);
+    var positives = array.length - negatives;
+    return positives;
+    }
 
 assert(countPositives([1, -2, 3]), 2, "Exercise 76");
 assert(countPositives([2, -5, -6]), 1, "Exercise 76");
@@ -962,6 +1018,15 @@ addToDone("Exercise 76 is correct.")
 
 // Exercise 77
 // Write a function definition named onlyPositiveEvens that takes in sequence of numbers and returns an array containing all the positive evens from the sequence
+    function onlyPositiveEvens(array){
+    var positiveEvens = array.filter(onlyEvenNumbers);
+    return positiveEvens;
+    }
+
+// function onlyEvenNumbers(array){
+//     var evens = array.filter(number => number % 2 === 0);
+//     return evens
+// }
 
 assert(onlyPositiveEvens([1, -2, 3]), [], "Exercise 77");
 assert(onlyPositiveEvens([2, -5, -6]), [2], "Exercise 77");
