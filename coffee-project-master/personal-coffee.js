@@ -63,6 +63,15 @@ function addCoffee(){
     roastSelection.value
 }
 
+function checkForEmpty(e){
+    e.preventDefault();
+    if(nameAddition.value === ""){
+        alert("Must Enter Coffee Name");
+    } else{
+        addCoffee();
+    }
+}
+
 var coffees = [
     {id: 1, name: 'Light City', roast: 'light'},
     {id: 2, name: 'Half City', roast: 'light'},
@@ -94,4 +103,4 @@ coffeeDiv.innerHTML = renderCoffees(coffees);
 roastSelection.addEventListener('change', updateCoffees);
 nameSelection.addEventListener('input', updateCoffees);
 submitButton.addEventListener('click', updateCoffees);
-addButton.addEventListener('click', addCoffee);
+addButton.addEventListener('click', checkForEmpty);
