@@ -60,6 +60,7 @@ function addCoffee(){
     var coffeeObject = {id: coffees.length + 1, name: addedCoffee, roast: addedRoast};
     coffees.push(coffeeObject);
     coffeeDiv.innerHTML = renderCoffees(coffees);
+    roastSelection.value
 }
 
 var coffees = [

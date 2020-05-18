@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM Review</title>
+</head>
+<body>
+  <div class="container">
+    <div id="main">
+      <input type="text" id="input">
+      <button id="add-to-list">Add to List</button>
+
+      <h4>Favorite Food:</h4>
+      <ul id="favorite-food">
+        <li>Ramen</li>
+        <li>Sushi</li>
+        <li>Curry</li>
+      </ul>
+
+      <h4 id="change-me">Change Me</h4>
+
+      <h4>My Cohort: <span id="my-cohort"></span></h4>
+      <input type="text" id="cohort-name">
+      <button id="change-cohort">Update</button>
+
+      <br>
+      <button id="highlight">Highlight</button>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <script>
+  $(document).ready(function(){
+
+    function titleCase(str) {
+      str = str.toLowerCase().split(' ');
+      for (var i = 0; i < str.length; i++) {
+        str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+      }
+      return str.join(' ');
+    }
+
+    //ANSWER ONE:
+    $('#add-to-list').click(function() {
+        if(typeof ($('#input').val()) !== "string" || $('#input').val() === "" || !isNaN($('#input').val())) {
+        alert("Please add your favorite food before clicking update");
+      } else if(typeof ($('#input').val()) === "string" && isNaN($('#input').val())) {
+          var add = $('#input').val();
+        $('#favorite-food').append('<li>' + titleCase(add) + '</li>');
+        $('#input').val(""); //resets the value of the form to empty
+      }
+    }); //NAILED IIITTT!!!!!!!
+
+    //ANSWER TWO
+    $('#change-me').dblclick(function (){
+        $(this).css('background-color', 'purple');
+    });
+
+
+    //ANSWER THREE
+    $('#change-cohort').click(function(){
+      if(typeof ($('#cohort-name').val()) !== "string" || $('#cohort-name').val() === "" || !isNaN($('#cohort-name').val())) {
+        alert("Please add your cohort name before clicking \"update\"");
+      } else if(typeof ($('#cohort-name').val()) === "string" && isNaN($('#cohort-name').val())) {
+        var cohort = $('#cohort-name').val();
+        $('#my-cohort').html('<span>' + titleCase(cohort) + '</span>');
+        $('#cohort-name').val("");
+      }
+
+    });
+
+
+    //ANSWER FOUR
+    // When 'Highlight' button is clicked, change the background color of the cohort name to yellow.
+    $('#highlight').click(function(){
+      $('#my-cohort').css('background-color', 'yellow');
+    });
+
+
+    //ANSWER FIVE
+    //Write some JavaScript that changes the background-color of the container to pink after 3 seconds.
+  //  setTimeout(relocate, 5000);
+    setTimeout(function(){
+      $('.container').css('background-color', 'pink');
+    }, 3000);
+
+  });
+  </script>
+
+</body>
+</html>
