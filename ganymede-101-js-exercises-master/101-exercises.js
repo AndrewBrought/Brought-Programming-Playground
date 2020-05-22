@@ -1354,7 +1354,7 @@ addToDone("Exercise 93 is complete.")
     function highestPriceBook(){
         let highestPriceBook = books.reduce((a, b) =>
             a.price > b.price ? a : b
-        );
+        , {price: 0});
         return highestPriceBook;
 
     }
