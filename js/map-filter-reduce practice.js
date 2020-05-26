@@ -108,6 +108,14 @@ let long = users.reduce((longest, user) =>
     //     console.log(longEmail);
     //    ==================================
 
+    let instructString = users.reduce((finalString, inst, index) => {
+        if(index < users.length - 1) {
+            return `${finalString}${inst.name.substring(0,1).toUpperCase()}${inst.name.substring(1, inst.name.length).toLowerCase()}, `
+        } else {
+            return `${finalString}${inst.name.substring(0,1).toUpperCase()}${inst.name.substring(1, inst.name.length).toLowerCase()}.`
+        }
+    }, "")
+console.log(instructString);
 
     // let instructorsString = users.reduce((finalString, instructor) => `${finalString}${instructor.name.substring(0,1).toUpperCase()}${instructor.name.substring(1, instructor.name.length).toLowerCase()} `, "Your instructors are: ");
     // console.log(instructorsString);
@@ -132,6 +140,17 @@ let long = users.reduce((longest, user) =>
 //     console.log(newTL);
 //     var unique = newTL.filter((v, i, a) => a.indexOf(v) === i);
 //     console.log(unique);
+
+
+    let uniqueLanguages = users.reduce((languageList, user) => {
+        for (let language of user.languages) {
+            if (!languageList.includes(language)){
+                languageList.push(language);
+            }
+        }
+            return languageList;
+    }, []);
+    console.log(uniqueLanguages);
 
 
     //Class solution:
