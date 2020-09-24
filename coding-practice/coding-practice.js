@@ -1,3 +1,8 @@
+//Given a list (array) find the second largest number
+
+let largest;
+let second;
+
 const secondLargest = (list) => {
     for (let i = 0; i <= list.length; i++) {
         if (i === 0) {
